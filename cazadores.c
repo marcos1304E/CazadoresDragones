@@ -36,9 +36,9 @@ if (lista == NULL)
 }
 
 
-	inicializarCazadores(&lista_cazadores[0],"El Vaquilla","navajazo",1234,1234);
-	inicializarCazadores(&lista_cazadores[1],"El Pequeño Nicolás","LLama a los presis",1234,1234);
-	inicializarCazadores(&lista_cazadores[2],"cazadorX","habilidad1",1234,1234);
+	inicializarCazadores(&lista[0],"El Vaquilla","navajazo",1234,1234);
+	inicializarCazadores(&lista[1],"El Pequeño Nicolás","LLama a los presis",1234,1234);
+	inicializarCazadores(&lista[2],"cazadorX","habilidad1",1234,1234);
 	return lista;
 
 }
