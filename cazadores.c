@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_CAZADORES 3
 
@@ -8,48 +9,46 @@ typedef struct{
 	char nombre [50];
 	char habilidad[50];
 	int vida;
-	int daño;
+	int dano;
 } Cazador;
 
 
-void inicializarCazadores(Cazador * num_cazador, char * nombre1, char habilidad1, int vida1, int daño1) {
+void inicializarCazadores(Cazador * nuevoCazador, char * nombre1, char *habilidad1, int vida1, int dano1) {
 
-    printf("Lista de cazadores:\n");
+    printf("Inicializando cazador ...\n");
 
-   	num_cazador -> vida = vida1;
-   	num_cazador -> daño = daño1;
-   	strcpy(num_cazador -> nombre, nombre1);
-   	strcpy(num_cazador -> habilidad, habilidad1);
+   	nuevoCazador -> vida = vida1;
+   	nuevoCazador -> dano = dano1;
+   	strcpy(nuevoCazador -> nombre, nombre1);
+   	strcpy(nuevoCazador -> habilidad, habilidad1);
    }
 
 
 
-Cazador * lista_cazadores(){
+Cazador * lista_cazadores(void){
 
+Cazador * lista= (Cazador *)malloc(MAX_CAZADORES * sizeof(Cazador));
 
-Cazador * lista_cazadores = (Cazador *)malloc(MAX_CAZADORES * sizeof(Cazador));
-
-if (lista_cazadores == NULL)
+if (lista == NULL)
 {
 	printf("Error en la asignación de memoria");
-	return EXIT_FAILURE;
+	exit(EXIT_FAILURE);
 }
 
 
 	inicializarCazadores(&lista_cazadores[0],"El Vaquilla","navajazo",1234,1234);
 	inicializarCazadores(&lista_cazadores[1],"El Pequeño Nicolás","LLama a los presis",1234,1234);
-	inicializarCazadores(&lista_cazadores[2],"","habilidad1",1234,1234);
+	inicializarCazadores(&lista_cazadores[2],"cazadorX","habilidad1",1234,1234);
+	return lista;
 
 }
 
-/*printf("Lista de cazadores:\n");
+Cazador * agregarCazador(Cazador * nuevoCazador){
 
-    for (int i = 0; i < MAX_CAZADORES; i++) {
+	//Malloc de Cazador * nuevo
 
-        printf("nombre %s\n", cazadores[i].nombre);
-        printf("habilidad %s\n", cazadores[i].habilidad);
-        printf("vida %d\n", cazadores[i].vida);
-        printf("daño %d\n", cazadores[i].daño);
+	printf("Introduce el nombre del cazador:");
+	scanf("%49s", nuevoCazador -> nombre);
 
-        printf("\n");
-    }*/
+
+}
