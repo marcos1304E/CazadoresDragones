@@ -3,7 +3,7 @@
 #include <string.h>
 
 #define MAX_CAZADORES 3
-
+/*Marcos*/
 
 typedef struct{
 	char nombre [50];
