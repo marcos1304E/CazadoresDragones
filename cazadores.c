@@ -3,6 +3,7 @@
 #include <string.h>
 
 #define MAX_CAZADORES 3
+
 /*Marcos*/
 
 typedef struct{
@@ -45,10 +46,10 @@ if (lista == NULL)
 
 Cazador * agregarCazador(Cazador * nuevoCazador){
 
-	//Malloc de Cazador * nuevo
+	Cazador * nuevo = (Cazador *)malloc(sizeof(Cazador)); 
 
 	printf("Introduce el nombre del cazador:");
 	scanf("%49s", nuevoCazador -> nombre);
 
 
-}
+	}
