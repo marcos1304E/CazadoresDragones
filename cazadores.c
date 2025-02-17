@@ -44,12 +44,31 @@ if (lista == NULL)
 
 }
 
-Cazador * agregarCazador(Cazador * nuevoCazador){
+Cazador * agregarCazador(Cazador * lista, int *numCazadores){//Para realloc necesitamos saber cuantos cazadores hay en la lista para calcular el nuevo tamaño
 
-	Cazador * nuevo = (Cazador *)malloc(sizeof(Cazador)); 
+	*numCazadores += 1;//Aumentamos cantidad
 
+	lista = (Cazador*) realloc(lista, (*numCazadores)*sizeof(Cazador));	
+
+	if (lista == NULL)
+	{
+		printf("Error en la asignacion de memoria");
+		exit(EXIT_FAILURE);
+	}
+
+//Nosotros al hacer un array, si antes teniamos 2 cazadores, [0][1], al agregar 1, incremento, ahora vale 3, pero como se empieza en 0, la posicion del tercer cazador sería [2] (3 - 1 = 2). Sería como lista [3-1], lista [2]
 	printf("Introduce el nombre del cazador:");
-	scanf("%49s", nuevoCazador -> nombre);
+	scanf("%49s", lista[*numCazadores -1].nombre);
 
+	 printf("Introduce la habilidad del cazador: ");
+    scanf("%49s", lista[*numCazadores -1].habilidad);
+
+    printf("Introduce la vida del cazador: ");
+    scanf("%d", &lista[*numCazadores -1].vida);
+
+    printf("Introduce el daño del cazador: ");
+    scanf("%d", &lista[*numCazadores -1].dano);
+
+    return lista;//Pq agregarCazador devuelve un puntero a la lista actualizada
 
 	}
