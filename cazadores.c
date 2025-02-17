@@ -58,7 +58,7 @@ Cazador * agregarCazador(Cazador * lista, int *numCazadores){//Para realloc nece
 
 	*numCazadores += 1;//Aumentamos cantidad
 
-	lista = (Cazador*) realloc(lista, (*numCazadores)*sizeof(Cazador));
+	lista = (Cazador*) realloc(lista, (*numCazadores)*sizeof(Cazador));	
 
 	if (lista == NULL)
 	{
