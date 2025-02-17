@@ -16,13 +16,13 @@ typedef struct{
 
 void inicializarCazadores(Cazador * nuevoCazador, char * nombre1, char *habilidad1, int vida1, int dano1) {
 
-    printf("Inicializando cazador ...\n");
-
+    
    	nuevoCazador -> vida = vida1;
    	nuevoCazador -> dano = dano1;
    	strcpy(nuevoCazador -> nombre, nombre1);
    	strcpy(nuevoCazador -> habilidad, habilidad1);
    }
+
 
 
 
@@ -36,12 +36,22 @@ if (lista == NULL)
 	exit(EXIT_FAILURE);
 }
 
+	printf("Inicializando cazadores...\n");
 
 	inicializarCazadores(&lista[0],"El Vaquilla","navajazo",1234,1234);
 	inicializarCazadores(&lista[1],"El Pequeño Nicolás","LLama a los presis",1234,1234);
 	inicializarCazadores(&lista[2],"cazadorX","habilidad1",1234,1234);
+
 	return lista;
 
+}
+
+void imprimir_lista(Cazador *lista, int numCazadores) {
+    printf("Lista de Cazadores:\n");
+    for (int i = 0; i < numCazadores; i++) {
+        printf("Cazador %d: %s, Habilidad: %s, Vida: %d, Daño: %d\n",
+               i + 1, lista[i].nombre, lista[i].habilidad, lista[i].vida, lista[i].dano);
+    }
 }
 
 Cazador * agregarCazador(Cazador * lista, int *numCazadores){//Para realloc necesitamos saber cuantos cazadores hay en la lista para calcular el nuevo tamaño
