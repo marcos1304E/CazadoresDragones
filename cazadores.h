@@ -6,6 +6,7 @@
 
 /*Marcos*/
 
+
 typedef struct{
 	char nombre [50];
 	char habilidad[50];
