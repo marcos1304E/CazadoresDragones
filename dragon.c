@@ -29,7 +29,7 @@ void Imprimir_Lista(Dragon * Lista){
     }
 }
 
-/*
+/*  
     ini_dragon(&lista[0],(10*randomnivel[0]), randomnivel[0], (2*randomnivel[0]), (100*randomnivel[0]), "Iulian Dragoi(El renegado)");
     ini_dragon(&lista[1],(10*randomnivel[0]), randomnivel[1], (2*randomnivel[0]), (100*randomnivel[0]), "Emerson y Jefferson(Dragon bicéfalo)");
     ini_dragon(&lista[2],(10*randomnivel[0]), randomnivel[2], (2*randomnivel[0]), (1000*randomnivel[0]), "Lory Money(El dragon de oro)");
