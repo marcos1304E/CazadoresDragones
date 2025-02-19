@@ -6,7 +6,7 @@
 
 /*Marcos*/
 
-
+//esto tiene que ir en el cazador.h
 typedef struct{
 	char nombre [50];
 	char habilidad[50];
