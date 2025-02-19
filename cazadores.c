@@ -6,6 +6,7 @@
 
 /*Marcos*/
 
+//esto tiene que ir en el cazador.h
 typedef struct{
 	char nombre [50];
 	char habilidad[50];
@@ -22,8 +23,6 @@ void inicializarCazadores(Cazador * nuevoCazador, char * nombre1, char *habilida
    	strcpy(nuevoCazador -> nombre, nombre1);
    	strcpy(nuevoCazador -> habilidad, habilidad1);
    }
-
-
 
 
 Cazador * lista_cazadores(void){
