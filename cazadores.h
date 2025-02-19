@@ -14,3 +14,7 @@ typedef struct{
 	int dano;
 } Cazador;
 
+
+void inicializarCazadores(Cazador *nuevoCazador, char *nombre1, char *habilidad1, int vida1, int dano1);
+
+//todas las funciones

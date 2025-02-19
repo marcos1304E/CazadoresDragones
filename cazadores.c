@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+#include <cazador.h>
+
 
 #define MAX_CAZADORES 3
 
@@ -14,6 +17,8 @@ typedef struct{
 	int dano;
 } Cazador;
 
+//enum
+//randomizador
 
 void inicializarCazadores(Cazador * nuevoCazador, char * nombre1, char *habilidad1, int vida1, int dano1) {
 
