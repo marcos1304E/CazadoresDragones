@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "dragon.h"
 
 /*
  *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
  */
 
 #define MAX_NOMBRE 50
-#define MULT_VIDA_DRAGON 10
 #define MULT_DEFENSA_DRAGON 2
 #define MULT_ORO_DRAGON 100
 
@@ -27,19 +27,12 @@ typedef enum {
     Ataque_Basico,// => 6
 } Ataques;
 
-//srtuck va en el .h del main
+//srtuck va en el .h del combate
 
-typedef struct{
-    int vida;
-    int nivel;
-    int defensa;
-    int oro;
-    char nombre[MAX_NOMBRE];
-}Dragon;
 
 void Imprimir_Lista(Dragon * Lista){
     for(int i = 0; i < MAX_LISTA; i++, Lista++){
-        printf("%d,%d,%d,%d,%s\n",Lista->vida,Lista->nivel,Lista->defensa,Lista->oro,Lista->nombre);
+        printf("%d,%d,%d,%f,%s\n",Lista->vida,Lista->nivel,Lista->defensa,Lista->oro,Lista->nombre);
     }
 }
 
@@ -60,6 +53,7 @@ Dragon * lista_dragon(){
     Dragon * lista = (Dragon*)malloc(MAX_LISTA*sizeof(Dragon));
 
     if(lista == NULL){
+
         printf("ERROR\n");
     }
 
