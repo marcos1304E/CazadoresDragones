@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <cazador.h>
 
 
 #define MAX_CAZADORES 3
@@ -12,16 +11,15 @@
 //esto tiene que ir en el cazador.h
 typedef struct{
 	char nombre [50];
-	char habilidad[50];
 	int vida;
-	int dano;
+	int defensa;
 } Cazador;
 
 typedef enum{
 
 	Navajazo,
 	LLama_a_los_presis,
-	Chiquibai;
+	Chiquibai,
 
 }Habilidades;
 
@@ -30,9 +28,9 @@ void inicializarCazadores(Cazador * nuevoCazador, char * nombre1, int vida1, int
 
     
    	nuevoCazador -> vida = vida1;
-   	nuevoCazador -> dano = dano1;
+   	nuevoCazador -> defensa = defensa1;
    	strcpy(nuevoCazador -> nombre, nombre1);
-   	strcpy(nuevoCazador -> habilidad, habilidad1);
+   	
    }
 
 
@@ -48,9 +46,9 @@ if (lista == NULL)
 
 	printf("Inicializando cazadores...\n");
 
-	inicializarCazadores(&lista[0],"El Vaquilla","navajazo",1234);
-	inicializarCazadores(&lista[1],"El Pequeño Nicolás","LLama a los presis",1234);
-	inicializarCazadores(&lista[2],"Gigante Noble","Chiquibai",1234);
+	inicializarCazadores(&lista[0],"El Vaquilla",1234,1234);
+	inicializarCazadores(&lista[1],"El Pequeño Nicolás",1234,1234);
+	inicializarCazadores(&lista[2],"Gigante Noble",1234,1234);
 
 	return lista;
 
@@ -59,8 +57,8 @@ if (lista == NULL)
 void imprimir_lista(Cazador *lista, int numCazadores) {
     printf("Lista de Cazadores:\n");
     for (int i = 0; i < numCazadores; i++) {
-        printf("Cazador %d: %s, Habilidad: %s, Vida: %d, Daño: %d\n",
-               i + 1, lista[i].nombre, lista[i].habilidad, lista[i].vida, lista[i].dano);
+        printf("Cazador %d: %s, Vida: %d, Defensa: %d\n",
+               i + 1, lista[i].nombre, lista[i].vida, lista[i].defensa);
     }
 }
 
@@ -80,15 +78,30 @@ Cazador * agregarCazador(Cazador * lista, int *numCazadores){//Para realloc nece
 	printf("Introduce el nombre del cazador:");
 	scanf("%49s", lista[*numCazadores -1].nombre);
 
-	 printf("Introduce la habilidad del cazador: ");
-    scanf("%49s", lista[*numCazadores -1].habilidad);
-
     printf("Introduce la vida del cazador: ");
     scanf("%d", &lista[*numCazadores -1].vida);
 
-    printf("Introduce el daño del cazador: ");
-    scanf("%d", &lista[*numCazadores -1].dano);
+    printf("Introduce la defensa del cazador: ");
+    scanf("%d", &lista[*numCazadores -1].defensa);
 
     return lista;//Pq agregarCazador devuelve un puntero a la lista actualizada
 
 	}
+
+int main() {
+
+    int numCazadores = MAX_CAZADORES;
+
+    Cazador *lista = lista_cazadores();
+
+    imprimir_lista(lista, numCazadores);
+    
+    printf("\nAgregando un nuevo cazador...\n");
+    lista = agregarCazador(lista, &numCazadores);
+    
+    imprimir_lista(lista, numCazadores);
+
+    free(lista);
+    
+    return 0;
+}
