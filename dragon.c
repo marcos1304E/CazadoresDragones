@@ -77,6 +77,7 @@ Dragon * lista_dragon(){
     ini_dragon(&lista[2], randomnivel[2], "Lory Money(El dragon de oro)");
 
     return lista;
+
 }
 
 Dragon * añadir_dragon(Dragon * lista_dragones_antigua){
@@ -118,22 +119,4 @@ Dragon * añadir_dragon(Dragon * lista_dragones_antigua){
     Imprimir_Lista(dragon_nuevo);
 
     return dragon_nuevo;
-}
-
-int main() {
-    Dragon *lista = lista_dragon();
-    if (lista == NULL) {
-        return EXIT_FAILURE;
-    }
-
-    printf("Lista inicial de dragones:\n");
-    Imprimir_Lista(lista);
-
-    lista = añadir_dragon(lista);
-    if (lista == NULL) {
-        return EXIT_FAILURE;
-    }
-
-    free(lista);
-    return 0;
 }

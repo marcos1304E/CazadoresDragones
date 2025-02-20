@@ -17,10 +17,16 @@ typedef struct{
 	int dano;
 } Cazador;
 
-//enum
-//randomizador
+typedef enum{
 
-void inicializarCazadores(Cazador * nuevoCazador, char * nombre1, char *habilidad1, int vida1, int dano1) {
+	Navajazo,
+	LLama_a_los_presis,
+	Chiquibai;
+
+}Habilidades;
+
+
+void inicializarCazadores(Cazador * nuevoCazador, char * nombre1, int vida1, int defensa1) {
 
     
    	nuevoCazador -> vida = vida1;
@@ -42,9 +48,9 @@ if (lista == NULL)
 
 	printf("Inicializando cazadores...\n");
 
-	inicializarCazadores(&lista[0],"El Vaquilla","navajazo",1234,1234);
-	inicializarCazadores(&lista[1],"El Pequeño Nicolás","LLama a los presis",1234,1234);
-	inicializarCazadores(&lista[2],"Gigante Noble","Chiquibai",1234,1234);
+	inicializarCazadores(&lista[0],"El Vaquilla","navajazo",1234);
+	inicializarCazadores(&lista[1],"El Pequeño Nicolás","LLama a los presis",1234);
+	inicializarCazadores(&lista[2],"Gigante Noble","Chiquibai",1234);
 
 	return lista;
 

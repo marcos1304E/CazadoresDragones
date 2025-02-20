@@ -6,7 +6,7 @@
 
 /*Marcos*/
 
-//esto tiene que ir en el cazador.h
+
 typedef struct{
 	char nombre [50];
 	char habilidad[50];
@@ -17,4 +17,6 @@ typedef struct{
 
 void inicializarCazadores(Cazador *nuevoCazador, char *nombre1, char *habilidad1, int vida1, int dano1);
 
-//todas las funciones
+void imprimir_lista(Cazador *lista, int numCazadores);
+
+Cazador * agregarCazador(Cazador * lista, int *numCazadores);
