@@ -14,18 +14,6 @@
 
 int MAX_LISTA = 3;
 
-typedef enum {
-    Cubrificación_masiva,// => 0
-    invocacion_vampírica,// => 1
-
-    ataque_quetzalcóatl,// => 2
-    fuego_helado,// => 3
-
-    Lluvia_dorada,// => 4
-    Rayo_aureo,// => 5
-
-    Ataque_Basico,// => 6
-} Ataques;
 
 //srtuck va en el .h del combate
 
