@@ -44,6 +44,7 @@ if (lista == NULL)
 	exit(EXIT_FAILURE);
 }
 
+
 	printf("Inicializando cazadores...\n");
 
 	inicializarCazadores(&lista[0],"El Vaquilla",1234,1234);
