@@ -6,9 +6,34 @@
 #include "cazador.h"
 #include "dragon.h"
 
+typedef enum {
+    Cubrificación_masiva,// => 0
+    invocacion_vampírica,// => 1
+
+    ataque_quetzalcóatl,// => 2
+    fuego_helado,// => 3
+
+    Lluvia_dorada,// => 4
+    Rayo_aureo,// => 5
+
+    Ataque_Basico,// => 6
+} Ataques_Dragon;
+
+typedef enum {
+    Cubrificación_masiva,// => 0
+    invocacion_vampírica,// => 1
+
+    ataque_quetzalcóatl,// => 2
+    fuego_helado,// => 3
+
+    Lluvia_dorada,// => 4
+    Rayo_aureo,// => 5
+
+    Ataque_Basico,// => 6
+} Ataques_Cazador;
 
 /*
- *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
+ *  Autor: Leo-nardo Marescutti, David Castejon y Marcos Escamilla
  */
 
 int ataque_dragon(){
@@ -47,3 +72,4 @@ int turnos(){
 
     return ;
 }
+                                                         
