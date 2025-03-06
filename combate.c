@@ -6,41 +6,86 @@
 #include "cazador.h"
 #include "dragon.h"
 
-typedef enum {
-    Cubrificación_masiva,// => 0
-    invocacion_vampírica,// => 1
-
-    ataque_quetzalcóatl,// => 2
-    fuego_helado,// => 3
-
-    Lluvia_dorada,// => 4
-    Rayo_aureo,// => 5
-
-    Ataque_Basico,// => 6
-} Ataques_Dragon;
-
-typedef enum {
-    Cubrificación_masiva,// => 0
-    invocacion_vampírica,// => 1
-
-    ataque_quetzalcóatl,// => 2
-    fuego_helado,// => 3
-
-    Lluvia_dorada,// => 4
-    Rayo_aureo,// => 5
-
-    Ataque_Basico,// => 6
-} Ataques_Cazador;
-
 /*
  *  Autor: Leo-nardo Marescutti, David Castejon y Marcos Escamilla
  */
 
+typedef enum {
+    Cubrificación_masiva,// => 0
+    Ataque_Basico,// => 1
+} Ataques_Dragon;
+
+typedef enum {
+    Fuego_helado,// => 0
+    Ataque_Basico,// => 1
+} Ataques_Dragon1;
+
+typedef enum {
+    Lluvia_dorada,// => 0
+    Ataque_Basico,// => 1
+} Ataques_Dragon2;
+
+typedef enum {
+    Navajazo,// => 0
+    Ataque_Basico,// => 1
+} Ataques_Cazador1;
+
+typedef enum {
+    LLama_a_los_presis,// => 0
+    Ataque_Basico,// => 1
+} Ataques_Cazador2;
+
+typedef enum {
+    Chiquibai,// => 0
+    Ataque_Basico,// => 1
+} Ataques_Cazador3;
+
+
+void category(int ataque){
+
+    switch(ataque){
+        case 0:printf("Cubrificación masiva");
+            break; 
+        default:printf("Ataque Basico");
+    }
+}
+
+void category(int ataque){
+
+    switch(ataque){
+        case 0:printf("Fuego helado");
+            break; 
+        default:printf("Ataque Basico");
+    }
+}
+
+void category(int ataque){
+
+    switch(ataque){
+        case 0:printf("Lluvia dorada");
+            break; 
+        default:printf("Ataque Basico");
+    }
+}
+
+
 int ataque_dragon(){
 
-    //ataques
-        //ataque basico+nivel (con posibilidad de critico)
-        //cada 3 turnos ataque especial
+    int random_ataque;
+    int random_critico;
+
+    srand(time(0));
+
+    min = 0;
+    max = 10;
+
+    random_ataque = (rand() % (max - min + 1)) + min;
+    
+    if(){
+        
+        
+        
+    }
 }
 
 int ataque_cazador(){
