@@ -63,33 +63,45 @@ void imprimir_lista(Cazador *lista, int numCazadores) {
     }
 }
 
-Cazador * agregarCazador(Cazador * lista, int *numCazadores){//Para realloc necesitamos saber cuantos cazadores hay en la lista para calcular el nuevo tamaño
+Cazador *agregarCazador(Cazador *lista, int *numCazadores) {
+    // Aumentar la cantidad de cazadores
+    (*numCazadores)++;
 
-	*numCazadores += 1;//Aumentamos cantidad
+    // Reasignar memoria para la lista de cazadores
+    lista = (Cazador*) realloc(lista, (*numCazadores) * sizeof(Cazador));
 
-	lista = (Cazador*) realloc(lista, (*numCazadores)*sizeof(Cazador));	
+    if (lista == NULL) {
+        printf("Error en la asignación de memoria.\n");
+        exit(EXIT_FAILURE);
+    }
 
-	if (lista == NULL)
-	{
-		printf("Error en la asignacion de memoria");
-		exit(EXIT_FAILURE);
-	}
+    // Solicitar y validar el nombre del cazador
+    printf("Introduce el nombre del cazador (máximo 49 caracteres): ");
+    scanf("%49s", lista[*numCazadores - 1].nombre);
 
-//Nosotros al hacer un array, si antes teniamos 2 cazadores, [0][1], al agregar 1, incremento, ahora vale 3, pero como se empieza en 0, la posicion del tercer cazador sería [2] (3 - 1 = 2). Sería como lista [3-1], lista [2]
-	printf("Introduce el nombre del cazador:");
-	scanf("%49s", lista[*numCazadores -1].nombre);
+    // Solicitar y validar la vida del cazador
+    do {
+        printf("Introduce la vida del cazador (debe ser mayor que 0): ");
+        scanf("%d", &lista[*numCazadores - 1].vida);
+        if (lista[*numCazadores - 1].vida < 1) {
+            printf("La vida tiene que ser un número positivo. Intenta de nuevo.\n");
+        }
+    } while (lista[*numCazadores - 1].vida < 1);
 
-    printf("Introduce la vida del cazador: ");
-    scanf("%d", &lista[*numCazadores -1].vida);
+    // Solicitar y validar la defensa del cazador
+    do {
+        printf("Introduce la defensa del cazador (debe ser mayor que 0): ");
+        scanf("%d", &lista[*numCazadores - 1].defensa);
+        if (lista[*numCazadores - 1].defensa < 1) {
+            printf("La defensa tiene que ser un número positivo. Intenta de nuevo.\n");
+        }
+    } while (lista[*numCazadores - 1].defensa < 1);
 
-    printf("Introduce la defensa del cazador: ");
-    scanf("%d", &lista[*numCazadores -1].defensa);
+    return lista; // Devolver la lista actualizada
+}
 
-    return lista;//Pq agregarCazador devuelve un puntero a la lista actualizada
 
-	}
-
-int main() {
+/*int main() {
 
     int numCazadores = MAX_CAZADORES;
 
@@ -106,3 +118,4 @@ int main() {
     
     return 0;
 }
+*/
