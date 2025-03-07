@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "cazadores.h"
 #include "dragon.h"
+#include "combate.h"
 
 void menu(Cazador *lista, int *numCazadores, Dragon *listaDragones, int *numDragones) {
     int opcion;
@@ -68,16 +69,16 @@ void menu(Cazador *lista, int *numCazadores, Dragon *listaDragones, int *numDrag
 
 int main(){
 
-	 Cazador *listaCazadores = NULL;  // Inicializa la lista de cazadores
-    int numCazadores = 0;  // Número de cazadores
-    Dragon *listaDragones = NULL;  // Inicializa la lista de dragones
-    int numDragones = 0;  // Número de dragones
+	 Cazador *listaCazadores = NULL;  
+    int numCazadores = 0;  
+    Dragon *listaDragones = NULL;  
+    int numDragones = 0;  
 
-    // Puedes inicializar listas o realizar operaciones adicionales aquí, si es necesario.
+    
 
     menu(listaCazadores, &numCazadores, listaDragones, &numDragones);
 
-    // Liberar memoria si es necesario
+    
     free(listaCazadores);
     free(listaDragones);
 

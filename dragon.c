@@ -8,21 +8,13 @@
  *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
  */
 
-#define MAX_NOMBRE 50
-#define MULT_DEFENSA_DRAGON 2
-#define MULT_ORO_DRAGON 100
+#define MAX_LISTA 3
 
-int MAX_LISTA = 3;
-
-
-//srtuck va en el .h del combate
-
-
-void Imprimir_Lista(Dragon * Lista){
-    for(int i = 0; i < MAX_LISTA; i++, Lista++){
-        printf("%d,%d,%d,%f,%s\n",Lista->vida,Lista->nivel,Lista->defensa,Lista->oro,Lista->nombre);
+void Imprimir_Lista(Dragon *lista, int numDragones) {
+    for (int i = 0; i < numDragones; i++) {
+        printf("Nombre: %s | Vida: %d | Nivel: %d | Defensa: %d | Oro: %.2f\n",
+               lista[i].nombre, lista[i].vida, lista[i].nivel, lista[i].defensa, lista[i].oro);
     }
-}
 
 
 void ini_dragon(Dragon *num_dragon, int valor_aleatorio, char * nombre1){
@@ -68,71 +60,30 @@ Dragon * lista_dragon(){
 
 }
 
-Dragon *añadir_dragon(Dragon *lista_dragones_antigua) {
-    int vida, nivel, defensa, oro, sum = 1;
-    char nombre[MAX_NOMBRE];
+Dragon *añadir_dragon(Dragon *listaDragones, int *numDragones) {
+    (*numDragones)++;
+    listaDragones = (Dragon *)realloc(listaDragones, (*numDragones) * sizeof(Dragon));
 
-    // Reasignar memoria para un nuevo dragón
-    Dragon *dragon_nuevo = (Dragon *)realloc(lista_dragones_antigua, (MAX_LISTA + sum) * sizeof(Dragon));
-    
-    if (dragon_nuevo == NULL) {
-        printf("Error al reasignar memoria.\n");
+    if (listaDragones == NULL) {
+        printf("Error al reasignar memoria para el nuevo dragón.\n");
         exit(EXIT_FAILURE);
     }
 
-    // Ingresar el nuevo dragón
-    for (int i = MAX_LISTA; i < (MAX_LISTA + sum); ++i) {
-        // Control de errores para la vida
-        do {
-            printf("Vida del dragón (debe ser mayor que 0): ");
-            scanf("%d", &vida);
-            if (vida < 1) {
-                printf("La vida tiene que ser positiva. Intenta de nuevo.\n");
-            }
-        } while (vida < 1);
+    // Datos del nuevo dragón
+    Dragon *nuevoDragon = &listaDragones[*numDragones - 1];
+    printf("Introduce el nombre del nuevo dragón: ");
+    scanf(" %[^\n]", nuevoDragon->nombre);  // Leer nombre con espacios
 
-        // Ingresar nivel
-        printf("Nivel del dragón: ");
-        scanf("%d", &nivel);
+    printf("Introduce el nivel del nuevo dragón: ");
+    scanf("%d", &nuevoDragon->nivel);
 
-        // Control de errores para la defensa
-        do {
-            printf("Cantidad de defensa (debe ser mayor que 0): ");
-            scanf("%d", &defensa);
-            if (defensa < 1) {
-                printf("La defensa tiene que ser positiva. Intenta de nuevo.\n");
-            }
-        } while (defensa < 1);
+    nuevoDragon->vida = nuevoDragon->nivel * MULT_VIDA_DRAGON;
+    nuevoDragon->defensa = nuevoDragon->nivel * MULT_DEFENSA_DRAGON;
+    nuevoDragon->oro = nuevoDragon->nivel * MULT_ORO_DRAGON;
 
-        // Control de errores para el oro
-        do {
-            printf("Cantidad de oro (debe ser mayor que 0): ");
-            scanf("%d", &oro);
-            if (oro < 1) {
-                printf("El oro tiene que ser positivo. Intenta de nuevo.\n");
-            }
-        } while (oro < 1);
-
-        // Ingresar nombre del dragón
-        printf("Nombre del dragón: ");
-        scanf(" "); // Limpiar el buffer
-        fgets(nombre, MAX_NOMBRE, stdin);
-        nombre[strlen(nombre) - 1] = '\0'; // Eliminar el salto de línea al final
-
-        // Inicializar el dragón
-        ini_dragon(&dragon_nuevo[i], nivel, nombre);
-    }
-
-    // Incrementar el tamaño de la lista
-    MAX_LISTA += sum;
-
-    // Imprimir la lista de dragones
-    printf("Nueva lista de dragones:\n");
-    Imprimir_Lista(dragon_nuevo);
-
-    return dragon_nuevo;
+    printf("¡Dragón añadido con éxito!\n");
+    return listaDragones;
 }
-
 
 int main() {
     // Crear una lista inicial de dragones

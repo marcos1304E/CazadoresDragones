@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*
+ *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
+ */
+
+
 #define MAX_CAZADORES 3
-
-/*Marcos*/
-
 
 typedef struct{
 	char nombre [50];
@@ -15,8 +17,7 @@ typedef struct{
 } Cazador;
 
 
-void inicializarCazadores(Cazador *nuevoCazador, char *nombre1, char *habilidad1, int vida1, int dano1);
-
 void imprimir_lista(Cazador *lista, int numCazadores);
-
-Cazador * agregarCazador(Cazador * lista, int *numCazadores);
+void inicializarCazador(Cazador *cazador, char *nombre, int vida, int defensa, int oro);
+Cazador *lista_cazadores(int *numCazadores);
+Cazador *agregarCazador(Cazador *lista, int *numCazadores);

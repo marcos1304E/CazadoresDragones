@@ -2,65 +2,43 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "cazadores.h"
 
-
-#define MAX_CAZADORES 3
-
-/*Marcos*/
-
-//esto tiene que ir en el cazador.h
-typedef struct{
-	char nombre [50];
-	int vida;
-	int defensa;
-} Cazador;
-
-typedef enum{
-
-	Navajazo,
-	LLama_a_los_presis,
-	Chiquibai,
-
-}Habilidades;
-
-
-void inicializarCazadores(Cazador * nuevoCazador, char * nombre1, int vida1, int defensa1) {
-
-    
-   	nuevoCazador -> vida = vida1;
-   	nuevoCazador -> defensa = defensa1;
-   	strcpy(nuevoCazador -> nombre, nombre1);
-   	
-   }
-
-
-Cazador * lista_cazadores(void){
-
-Cazador * lista= (Cazador *)malloc(MAX_CAZADORES * sizeof(Cazador));
-
-if (lista == NULL)
-{
-	printf("Error en la asignación de memoria");
-	exit(EXIT_FAILURE);
-}
-
-
-	printf("Inicializando cazadores...\n");
-
-	inicializarCazadores(&lista[0],"El Vaquilla",1234,1234);
-	inicializarCazadores(&lista[1],"El Pequeño Nicolás",1234,1234);
-	inicializarCazadores(&lista[2],"Gigante Noble",1234,1234);
-
-	return lista;
-
-}
+/*
+ *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
+ */
 
 void imprimir_lista(Cazador *lista, int numCazadores) {
-    printf("Lista de Cazadores:\n");
+    printf("\nLista de Cazadores:\n");
     for (int i = 0; i < numCazadores; i++) {
-        printf("Cazador %d: %s, Vida: %d, Defensa: %d\n",
-               i + 1, lista[i].nombre, lista[i].vida, lista[i].defensa);
+        printf("Cazador %d: %s | Vida: %d | Defensa: %d | Oro: %d\n",
+               i + 1, lista[i].nombre, lista[i].vida, lista[i].defensa, lista[i].oro);
     }
+}
+
+
+void inicializarCazador(Cazador *cazador, char *nombre, int vida, int defensa, int oro) {
+    strcpy(cazador->nombre, nombre);
+    cazador->vida = vida;
+    cazador->defensa = defensa;
+    cazador->oro = oro;
+}
+
+Cazador *lista_cazadores(int *numCazadores) {
+    *numCazadores = 3;  // Número inicial de cazadores
+    Cazador *lista = (Cazador *)malloc((*numCazadores) * sizeof(Cazador));
+
+    if (lista == NULL) {
+        printf("Error al asignar memoria para los cazadores.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Inicializando cazadores...\n");
+    inicializarCazador(&lista[0], "El Vaquilla", 100, 20, 50);
+    inicializarCazador(&lista[1], "El Pequeño Nicolás", 120, 15, 40);
+    inicializarCazador(&lista[2], "Gigante Noble", 150, 25, 60);
+
+    return lista;
 }
 
 Cazador *agregarCazador(Cazador *lista, int *numCazadores) {
@@ -72,7 +50,9 @@ Cazador *agregarCazador(Cazador *lista, int *numCazadores) {
 
     if (lista == NULL) {
         printf("Error en la asignación de memoria.\n");
+        free(lista);
         exit(EXIT_FAILURE);
+       
     }
 
     // Solicitar y validar el nombre del cazador
@@ -97,7 +77,9 @@ Cazador *agregarCazador(Cazador *lista, int *numCazadores) {
         }
     } while (lista[*numCazadores - 1].defensa < 1);
 
-    return lista; // Devolver la lista actualizada
+    printf("¡Cazador añadido con éxito!\n");
+
+    return lista; 
 }
 
 

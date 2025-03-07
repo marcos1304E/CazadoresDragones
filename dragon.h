@@ -21,10 +21,8 @@ typedef struct{
     char nombre[MAX_NOMBRE];
 }Dragon;
 
-void Imprimir_Lista(Dragon * Lista);
+void Imprimir_Lista(Dragon *lista, int numDragones);
+void ini_dragon(Dragon *num_dragon, int valor_aleatorio, char *nombre1);
+Dragon *lista_dragon(int *numDragones);
+Dragon *añadir_dragon(Dragon *listaDragones, int *numDragones);
 
-void ini_dragon(Dragon *num_dragon, int valor_aleatorio, char * nombre1);
-
-Dragon * lista_dragon();
-
-Dragon * añadir_dragon(Dragon * lista_dragones_antigua);

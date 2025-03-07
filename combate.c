@@ -58,45 +58,35 @@ void ataque_dragon(Dragon *dragon, Cazador *cazador) {
     printf("Vida restante del cazador: %d\n", cazador->vida);
 }
 
-int ataque_cazador(){
-
+int ataque_cazador(Cazador *cazador, Dragon *dragon) {
     int cazador_menu;
     int random_critico_cazador;
     int n_ataque;
     int menu_inventario;
-    int 1 = 5;
-    int 2 = 1;
-    int 3 = 3;
-    int 4 = 1;
-    int 5 = 1;
-
+    
+    // Opciones de acción
     printf("Selecciona que hacer:\n");
-    printf("1 Ataque\n ");
-    printf("2 Inventario\n ");
-    printf("3 Escapar\n ");
+    printf("1. Ataque\n ");
+    printf("2. Inventario\n ");
+    printf("3. Escapar\n ");
 
-    scanf("%d", cazador_menu);
+    scanf("%d", &cazador_menu);
 
     if(cazador_menu == 1 || cazador_menu == 2){    
         switch(cazador_menu){
-
-            case 1:
-
-                srand(time(0));
-
-                min = 0;
-                max = 10;
-
+            case 1:  // Selección de ataque
+                srand(time(0));  // Solo se llama una vez al inicio
+                int min = 0, max = 10;
                 random_critico_cazador = (rand() % (max - min + 1)) + min;
-                
-                printf("Selecciona un ataque:\n");
-                printf("1 Ataque especial\n ");
-                printf("2 Ataque basico\n ");
 
+                printf("Selecciona un ataque:\n");
+                printf("1. Ataque especial\n ");
+                printf("2. Ataque básico\n ");
                 scanf("%d", &n_ataque);
-                if(cazador_menu == 1 || cazador_menu == 2){
-                    switch(n_ataque){
-                        case 1:
+
+                // Realiza el ataque
+                switch(n_ataque){
+                    case 1:
                         if (random_critico_cazador > 7) {
                             printf("¡Golpe crítico del cazador! ¡Mucho daño al dragón!\n");
                             dragon->vida -= cazador->defensa * 2;  // Golpe crítico
@@ -117,65 +107,56 @@ int ataque_cazador(){
                     default:
                         printf("Opción de ataque no válida.\n");
                         break;
-                    }
-                break;
-            }
-            case 2:
-
-                printf("Inventario:\n");
-                printf("1. Poción herbovitalizante (%d)\n ",1);
-                printf("2. Galleta celestial (%d)\n ",2);
-                printf("3. Explosivo demoniaco (%d)\n ",3);
-                printf("4. Varita de hiperrayos magicos de guerra mundiales explosivos (%d)\n ",4);
-                printf("5. Doble elefante telepata de guerra (%d)\n ",5);
-                printf("6. Volver atras");
-
-                scanf("%d", menu_inventario);
-                if(cazador_menu < 7 && cazador_menu >= 0){
-                    switch(menu_inventario){
-
-                        case 1:
-                            //Poción herbovitalizante
-                        break;
-                            
-                        case 2:
-                            //Galleta celestial
-                        break;
-
-                        case 3:
-                            //Explosivo demoniaco
-                        break;
-
-                        case 4:
-                            //Varita de hiperrayos magicos de guerra mundiales explosivos genericos chinos explotados
-                        break;
-
-                        case 5:
-                            //Doble elefante telepata de guerra
-                        break;
-                    }
                 }
-            break;
+                break;
+            case 2:  // Menú de inventario
+                printf("Inventario:\n");
+                printf("1. Poción herbovitalizante\n");
+                printf("2. Galleta celestial\n");
+                printf("3. Explosivo demoníaco\n");
+                printf("4. Varita de hiperrayos mágicos\n");
+                printf("5. Doble elefante telepata de guerra\n");
+                printf("6. Volver atrás\n");
+                scanf("%d", &menu_inventario);
+
+                switch(menu_inventario) {
+                    case 1:
+                        printf("Has usado la Poción herbovitalizante. Aumentas tu vida.\n");
+                        cazador->vida += 20;  // Ejemplo de lo que puede hacer el ítem
+                        break;
+                    case 2:
+                        printf("Has comido la Galleta celestial. Aumentas tu defensa.\n");
+                        cazador->defensa += 10;  
+                        break;
+                    case 3:
+                        printf("Usas el Explosivo demoníaco. ¡Gran daño al dragón!\n");
+                        dragon->vida -= 50;  
+                        break;
+                    case 4:
+                        printf("Usas la Varita de hiperrayos mágicos. ¡Mucho daño al dragón!\n");
+                        dragon->vida -= 30;  
+                        break;
+                    case 5:
+                        printf("Usas el Doble elefante telepata de guerra. ¡Incrementa tus habilidades!\n");
+                        cazador->vida += 15;  
+                        break;
+                    case 6:
+                        printf("Volver atrás al menú anterior.\n");
+                        break;
+                    default:
+                        printf("Opción de inventario no válida.\n");
+                        break;
+                }
+                break;
+            case 3:  // Escapar
+                printf("Has decidido escapar del combate.\n");
+                break;
+            default:
+                printf("Por favor introduce un valor válido(1,2,3).\n");
+                break;
         }
-
-    }else{printf("Por Favor introduce un valor valido(1,2,3), Gracias");}
+    } else {
+        printf("Por favor introduce un valor válido(1,2,3), Gracias.\n");
+    }
+    return 0;
 }
-        int turnos(){
-
-            do{
-
-                //ataque cazador(turno)
-
-                //ataque dragon(turno)
-
-            }while(/*Vida de Cazador != 0*/||/*Vida de Dragon != 0*/);
-
-            if (/*Vida de Cazador == 0*/){
-
-                //llamar (utilidades())
-
-            }
-
-    return ;
-}
-                                                         
