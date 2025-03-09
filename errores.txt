@@ -1,3 +1,0 @@
-/usr/bin/ld: /tmp/ccto6z6p.o: in function `main':
-dragon.c:(.text+0x3f9): multiple definition of `main'; /tmp/cc7CrkyT.o:main.c:(.text+0x44d): first defined here
-collect2: error: ld returned 1 exit status
