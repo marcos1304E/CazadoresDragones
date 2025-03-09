@@ -5,20 +5,11 @@
 
 #include "cazadores.h"
 #include "dragon.h"
+#include "combate.h"
 
 /*
  *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
  */
-
-typedef enum {
-    Cubrificacion_masiva,
-    Fuego_helado,
-    Lluvia_dorada,
-    Navajazo,
-    LLama_a_los_presis,
-    Chiquibai,
-    Ataque_Basico
-} Ataques;
 
 void category(Ataques ataque) {
     switch (ataque) {
@@ -69,7 +60,6 @@ int ataque_cazador(Cazador *cazador, Dragon *dragon) {
     printf("1. Ataque\n ");
     printf("2. Inventario\n ");
     printf("3. Escapar\n ");
-
     scanf("%d", &cazador_menu);
 
     if(cazador_menu == 1 || cazador_menu == 2){    
@@ -159,4 +149,40 @@ int ataque_cazador(Cazador *cazador, Dragon *dragon) {
         printf("Por favor introduce un valor válido(1,2,3), Gracias.\n");
     }
     return 0;
+}
+
+void turnos(Cazador *cazador, Dragon *dragon) {
+    int turno = 1;  // 1: turno del cazador, 0: turno del dragón
+    int vidaCazador = cazador->vida;
+    int vidaDragon = dragon->vida;
+
+    srand(time(0));  // Inicializamos el generador de números aleatorios
+
+    // Bucle de combate
+    while (vidaCazador > 0 && vidaDragon > 0) {
+        if (turno == 1) {
+            // Turno del cazador
+            printf("Es el turno de %s (Cazador).\n", cazador->nombre);
+            // Aquí puedes llamar a la función de ataque del cazador
+            ataque_cazador(cazador, dragon);  // Aquí debería estar la función para que el cazador ataque
+            vidaDragon = dragon->vida; // Actualiza la vida del dragón después del ataque
+            printf("Vida del dragón después del ataque: %d\n", vidaDragon);
+            turno = 0; // Cambiar al turno del dragón
+        } else {
+            // Turno del dragón
+            printf("Es el turno de %s (Dragón).\n", dragon->nombre);
+            // Aquí puedes llamar a la función de ataque del dragón
+            ataque_dragon(dragon, cazador);  // Aquí debería estar la función para que el dragón ataque
+            vidaCazador = cazador->vida; // Actualiza la vida del cazador después del ataque
+            printf("Vida del cazador después del ataque: %d\n", vidaCazador);
+            turno = 1; // Cambiar al turno del cazador
+        }
+    }
+
+    // Fin del combate
+    if (vidaCazador <= 0) {
+        printf("¡El cazador %s ha perdido el combate!\n", cazador->nombre);
+    } else if (vidaDragon <= 0) {
+        printf("¡El dragón %s ha perdido el combate!\n", dragon->nombre);
+    }
 }

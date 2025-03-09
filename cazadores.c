@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include "cazadores.h"
+#include "combate.h"
 
 /*
  *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
@@ -82,22 +83,3 @@ Cazador *agregarCazador(Cazador *lista, int *numCazadores) {
     return lista; 
 }
 
-
-/*int main() {
-
-    int numCazadores = MAX_CAZADORES;
-
-    Cazador *lista = lista_cazadores();
-
-    imprimir_lista(lista, numCazadores);
-    
-    printf("\nAgregando un nuevo cazador...\n");
-    lista = agregarCazador(lista, &numCazadores);
-    
-    imprimir_lista(lista, numCazadores);
-
-    free(lista);
-    
-    return 0;
-}
-*/
