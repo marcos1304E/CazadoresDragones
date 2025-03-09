@@ -63,19 +63,19 @@ Cazador *agregarCazador(Cazador *lista, int *numCazadores) {
     do {
         printf("Introduce la vida del cazador (debe ser mayor que 0): ");
         scanf("%d", &lista[*numCazadores - 1].vida);
-        if (lista[*numCazadores - 1].vida < 1) {
-            printf("La vida tiene que ser un número positivo. Intenta de nuevo.\n");
+        if (lista[*numCazadores - 1].vida < 1 || lista[*numCazadores -1].vida > 200) {
+            printf("La vida debe estar entre 1 y 200. Intenta de nuevo.\n");
         }
-    } while (lista[*numCazadores - 1].vida < 1);
+    } while (lista[*numCazadores - 1].vida < 1 || lista[*numCazadores -1].vida > 200);
 
     // Solicitar y validar la defensa del cazador
     do {
-        printf("Introduce la defensa del cazador (debe ser mayor que 0): ");
+        printf("Introduce la defensa del cazador (1 - 80): ");
         scanf("%d", &lista[*numCazadores - 1].defensa);
-        if (lista[*numCazadores - 1].defensa < 1) {
-            printf("La defensa tiene que ser un número positivo. Intenta de nuevo.\n");
+        if (lista[*numCazadores - 1].defensa < 1 || lista[*numCazadores - 1].defensa > 80) {
+            printf("La defensa debe estar entre 1 y 80. Intenta de nuevo.\n");
         }
-    } while (lista[*numCazadores - 1].defensa < 1);
+    } while (lista[*numCazadores - 1].defensa < 1 || lista[*numCazadores - 1].defensa > 80);
 
     printf("¡Cazador añadido con éxito!\n");
 
