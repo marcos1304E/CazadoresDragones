@@ -5,6 +5,10 @@
 #include "combate.h"
 #include "utilidades.h"
 
+/*
+ *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
+ */
+
 void menu(Cazador *listaCazadores, int *numCazadores, Dragon *listaDragones, int *numDragones) {
     int opcion;
     do {

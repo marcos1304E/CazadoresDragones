@@ -5,6 +5,9 @@
 #include "cazadores.h"
 #include "dragon.h"
 
+/*
+ *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
+ */
 
 typedef enum {
     Cubrificacion_masiva,

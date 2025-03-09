@@ -1,6 +1,10 @@
 #ifndef CAZADORES_H
 #define CAZADORES_H
 
+/*
+ *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
+ */
+
 typedef struct {
     char nombre[50];
     int vida;

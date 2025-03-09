@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include "utilidades.h"
 
+/*
+ *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
+ */
+
 void tienda(Cazador *cazador) {
     int opcion;
     int oro = cazador->oro;  // Suponiendo que cada cazador tiene una cantidad de oro
