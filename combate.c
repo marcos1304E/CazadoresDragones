@@ -177,5 +177,10 @@ void turnos(Cazador *cazador, Dragon *dragon) {
         imprimir_con_color(COLOR_ERROR, "¡El cazador %s ha perdido el combate!\n", cazador->nombre);
     } else if (vidaDragon <= 0) {
         imprimir_con_color(COLOR_ERROR, "¡El dragón %s ha perdido el combate!\n", dragon->nombre);
+
+        // Ahora el cazador gana el oro del dragón en cada victoria
+        cazador->oro += dragon->oro;
+        printf("¡%s ha ganado %d de oro!\n", cazador->nombre, dragon->oro);
+
     }
 }
