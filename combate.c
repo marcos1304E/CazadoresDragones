@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 
+#include "colores.h"
 #include "cazadores.h"
 #include "dragon.h"
 #include "combate.h"
@@ -147,7 +148,7 @@ void turnos(Cazador *cazador, Dragon *dragon) {
             // Aquí puedes llamar a la función de ataque del cazador
             ataque_cazador(cazador, dragon);  // Aquí debería estar la función para que el cazador ataque
             vidaDragon = dragon->vida; // Actualiza la vida del dragón después del ataque
-            printf("Vida del dragón después del ataque: %d\n", vidaDragon);
+            printf(VERDE,"Vida del dragón después del ataque: %d\n", vidaDragon);
             turno = 0; // Cambiar al turno del dragón
         } else {
             // Turno del dragón
