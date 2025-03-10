@@ -82,4 +82,3 @@ Cazador *agregarCazador(Cazador *lista, int *numCazadores) {
 
     return lista; 
 }
-

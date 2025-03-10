@@ -69,7 +69,6 @@ int ataque_cazador(Cazador *cazador, Dragon *dragon) {
     int cazador_menu;
     int random_critico_cazador;
     int n_ataque;
-    int menu_inventario;
     
     // Opciones de acción
     imprimir_con_color(COLOR_MENU, "\n===== COMBATE =====\n");

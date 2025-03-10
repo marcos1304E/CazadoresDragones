@@ -9,6 +9,7 @@
  *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
  */
 
+//Menu principal
 void menu(Cazador *listaCazadores, int *numCazadores, Dragon *listaDragones, int *numDragones) {
     int opcion;
     do {
@@ -24,34 +25,35 @@ void menu(Cazador *listaCazadores, int *numCazadores, Dragon *listaDragones, int
         printf("7️⃣  ❌  Salir del juego\n");
         printf("====================================\n");
         printf("Elige una opción: ");
-        scanf("%d", &opcion);
+        scanf("%d", &opcion);//Y leemos opcion ingresada por el usuario
 
         switch (opcion) {
             case 1:
-                system("clear");
-                imprimir_lista(listaCazadores, *numCazadores);
+                system("clear");//Limpiamos pantalla
+                imprimir_lista(listaCazadores, *numCazadores);//Muestra lista de cazadores
                 break;
             case 2:
                 system("clear");
-                Imprimir_Lista(listaDragones, *numDragones);
+                Imprimir_Lista(listaDragones, *numDragones);//Muestra lista de dragones
                 break;
             case 3:
                 system("clear");
-                listaCazadores = agregarCazador(listaCazadores, numCazadores);
+                listaCazadores = agregarCazador(listaCazadores, numCazadores);//Agrega un nuevo cazador
                 break;
             case 4:
                 system("clear");
-                listaDragones = añadir_dragon(listaDragones, numDragones);
+                listaDragones = añadir_dragon(listaDragones, numDragones);//Agrega un nuevo dragón
                 break;
             case 5:
                 system("clear");
+
                 if (*numCazadores > 0 && *numDragones > 0) {
                     int cazadorIdx, dragonIdx;
-                    imprimir_lista(listaCazadores, *numCazadores);
+                    imprimir_lista(listaCazadores, *numCazadores);//Muestra lista cazadores
                     printf("Elige un cazador (1-%d): ", *numCazadores);
                     scanf("%d", &cazadorIdx);
 
-                    Imprimir_Lista(listaDragones, *numDragones);
+                    Imprimir_Lista(listaDragones, *numDragones);//Muestra lista dragones
                     printf("Elige un dragón (1-%d): ", *numDragones);
                     scanf("%d", &dragonIdx);
 
@@ -90,7 +92,7 @@ void menu(Cazador *listaCazadores, int *numCazadores, Dragon *listaDragones, int
                 system("clear");
                 printf("❌ Opción no válida, intenta de nuevo.\n");
         }
-    } while (opcion != 7);
+    } while (opcion != 7);//Repite el menu hasta que el usuario elija salir
 }
 
 int main() {
@@ -98,12 +100,12 @@ int main() {
     int numCazadores = 0;
     Dragon *listaDragones = NULL;
     int numDragones = 0;
-
+//Inicializamos listas de cazadores y dragones
     listaCazadores = lista_cazadores(&numCazadores);
     listaDragones = lista_dragon(&numDragones);
-
+//LLamamos a funcion del menú principal
     menu(listaCazadores, &numCazadores, listaDragones, &numDragones);
-
+//Liberamos memoria
     free(listaCazadores);
     free(listaDragones);
 
