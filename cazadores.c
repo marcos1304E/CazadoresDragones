@@ -35,9 +35,9 @@ Cazador *lista_cazadores(int *numCazadores) {
     }
 
     printf("Inicializando cazadores...\n");
-    inicializarCazador(&lista[0], "El Vaquilla", 100, 20, 50);
-    inicializarCazador(&lista[1], "El Pequeño Nicolás", 120, 15, 40);
-    inicializarCazador(&lista[2], "Gigante Noble", 150, 25, 60);
+    inicializarCazador(&lista[0], "El Vaquilla", 140, 50, 50);
+    inicializarCazador(&lista[1], "El Pequeño Nicolás", 160, 45, 50);
+    inicializarCazador(&lista[2], "Gigante Noble", 200, 55, 50);
 
     return lista;
 }
