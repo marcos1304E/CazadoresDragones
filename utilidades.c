@@ -1,59 +1,60 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+
 #include "utilidades.h"
 
 /*
  *  Autor: Leonardo Marescutti, David Castejon y Marcos Escamilla
  */
 
+// Lista global de objetos disponibles
+Objeto inventario[] = {
+    {"Poción de vida", 20, 0, 0, 50, 0},
+    {"Armadura ligera", 0, 10, 0, 100, 0},
+    {"Espada afilada", 0, 0, 15, 150, 0},
+    {"Elixir mágico", 50, 10, 10, 200, 0},
+    {"Doble elefante de guerra", 0, 20, 20, 300, 0}
+};
+
 void tienda(Cazador *cazador) {
     int opcion;
-    int oro = cazador->oro;  // Suponiendo que cada cazador tiene una cantidad de oro
-
     do {
-        printf("\n===== 🛒 TIENDA DEL CAZADOR 🛒 =====\n");
-        printf("1. Poción de vida (+20 HP) - 50 Oro\n");
-        printf("2. Armadura ligera (+10 Defensa) - 100 Oro\n");
-        printf("3. Espada afilada (+15 Ataque) - 150 Oro\n");
-        printf("4. Salir de la tienda\n");
-        printf("Tu oro actual: %d\n", oro);
-        printf("Selecciona una opción: ");
+        printf("\n===== 🛒 TIENDA 🛒 =====\n");
+        printf("Tu oro: %d\n", cazador->oro);
+        for (int i = 0; i < 5; i++) {
+            printf("%d. %s (+%d HP, +%d DEF, +%d ATQ) - %d Oro (x%d)\n",
+                   i + 1, inventario[i].nombre,
+                   inventario[i].vidaExtra, inventario[i].defensaExtra, inventario[i].ataqueExtra,
+                   inventario[i].precio, inventario[i].cantidad);
+        }
+        printf("6. Salir de la tienda\n");
+        printf("Elige un objeto: ");
         scanf("%d", &opcion);
 
-        switch (opcion) {
-            case 1:
-                if (oro >= 50) {
-                    cazador->vida += 20;
-                    oro -= 50;
-                    printf("Has comprado una Poción de vida. Vida actual: %d\n", cazador->vida);
-                } else {
-                    printf("No tienes suficiente oro.\n");
-                }
-                break;
-            case 2:
-                if (oro >= 100) {
-                    cazador->defensa += 10;
-                    oro -= 100;
-                    printf("Has comprado una Armadura ligera. Defensa actual: %d\n", cazador->defensa);
-                } else {
-                    printf("No tienes suficiente oro.\n");
-                }
-                break;
-            case 3:
-                if (oro >= 150) {
-                    cazador->ataque += 15;
-                    oro -= 150;
-                    printf("Has comprado una Espada afilada. Ataque actual: %d\n", cazador->ataque);
-                } else {
-                    printf("No tienes suficiente oro.\n");
-                }
-                break;
-            case 4:
-                printf("Saliendo de la tienda...\n");
-                break;
-            default:
-                printf("Opción no válida, intenta de nuevo.\n");
+        if (opcion >= 1 && opcion <= 5) {
+            if (cazador->oro >= inventario[opcion - 1].precio) {
+                cazador->oro -= inventario[opcion - 1].precio;
+                inventario[opcion - 1].cantidad++;
+                printf("Has comprado %s (x%d).\n", inventario[opcion - 1].nombre, inventario[opcion - 1].cantidad);
+            } else {
+                printf("No tienes suficiente oro.\n");
+            }
         }
-    } while (opcion != 4);
+    } while (opcion != 6);
+}
 
-    cazador->oro = oro;  // Guardamos la cantidad de oro restante
+// Función para usar objetos en combate
+void usar_objeto(Cazador *cazador, Objeto *objeto) {
+    if (objeto->cantidad > 0) {
+        printf("Usaste %s.\n", objeto->nombre);
+        cazador->vida += objeto->vidaExtra;
+        cazador->defensa += objeto->defensaExtra;
+        cazador->ataque += objeto->ataqueExtra;
+        objeto->cantidad--;
+    } else {
+        printf("No tienes más %s.\n", objeto->nombre);
+    }
 }
