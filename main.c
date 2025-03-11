@@ -52,7 +52,7 @@ void menu(Cazador *listaCazadores, int *numCazadores, Dragon *listaDragones, int
                     imprimir_lista(listaCazadores, *numCazadores);//Muestra lista cazadores
                     printf("Elige un cazador (1-%d): ", *numCazadores);
                     scanf("%d", &cazadorIdx);
-
+                    
                     Imprimir_Lista(listaDragones, *numDragones);//Muestra lista dragones
                     printf("Elige un dragón (1-%d): ", *numDragones);
                     scanf("%d", &dragonIdx);
